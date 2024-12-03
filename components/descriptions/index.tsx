@@ -52,6 +52,10 @@ export interface DescriptionsProps {
     label?: React.CSSProperties;
     content?: React.CSSProperties;
   };
+  classNames?: {
+    label?: string;
+    content?: string;
+  };
   items?: DescriptionsItemType[];
   id?: string;
 }
@@ -74,6 +78,7 @@ const Descriptions: React.FC<DescriptionsProps> & CompoundedComponent = (props) 
     contentStyle,
     styles,
     items,
+    classNames: descriptionsClassNames,
     ...restProps
   } = props;
   const { getPrefixCls, direction, descriptions } = React.useContext(ConfigContext);
@@ -104,8 +109,19 @@ const Descriptions: React.FC<DescriptionsProps> & CompoundedComponent = (props) 
 
   // ======================== Render ========================
   const contextValue = React.useMemo(
-    () => ({ labelStyle, contentStyle, styles: { ...descriptions?.styles, ...styles } }),
-    [labelStyle, contentStyle, JSON.stringify(styles), JSON.stringify(descriptions?.styles)],
+    () => ({
+      labelStyle,
+      contentStyle,
+      styles: { ...descriptions?.styles, ...styles },
+      descriptionsClassNames,
+    }),
+    [
+      labelStyle,
+      contentStyle,
+      JSON.stringify(styles),
+      JSON.stringify(descriptions?.styles),
+      descriptionsClassNames,
+    ],
   );
 
   return wrapCSSVar(

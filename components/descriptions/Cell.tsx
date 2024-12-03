@@ -19,6 +19,10 @@ export interface CellProps {
     label?: React.CSSProperties;
     content?: React.CSSProperties;
   };
+  classNames?: {
+    label?: string;
+    content?: string;
+  };
   bordered?: boolean;
   label?: React.ReactNode;
   content?: React.ReactNode;
@@ -41,6 +45,7 @@ const Cell: React.FC<CellProps> = (props) => {
     colon,
     type,
     styles,
+    classNames: descriptionsClassNames,
   } = props;
 
   const Component = component as keyof JSX.IntrinsicElements;
@@ -52,6 +57,8 @@ const Cell: React.FC<CellProps> = (props) => {
           {
             [`${itemPrefixCls}-item-label`]: type === 'label',
             [`${itemPrefixCls}-item-content`]: type === 'content',
+            [`${descriptionsClassNames?.label}`]: type === 'label',
+            [`${descriptionsClassNames?.content}`]: type === 'content',
           },
           className,
         )}
@@ -73,7 +80,7 @@ const Cell: React.FC<CellProps> = (props) => {
       <div className={`${itemPrefixCls}-item-container`}>
         {(label || label === 0) && (
           <span
-            className={classNames(`${itemPrefixCls}-item-label`, {
+            className={classNames(`${itemPrefixCls}-item-label`, descriptionsClassNames?.label, {
               [`${itemPrefixCls}-item-no-colon`]: !colon,
             })}
             style={{ ...labelStyle, ...styles?.label }}
@@ -83,7 +90,7 @@ const Cell: React.FC<CellProps> = (props) => {
         )}
         {(content || content === 0) && (
           <span
-            className={classNames(`${itemPrefixCls}-item-content`)}
+            className={classNames(`${itemPrefixCls}-item-content`, descriptionsClassNames?.content)}
             style={{ ...contentStyle, ...styles?.content }}
           >
             {content}

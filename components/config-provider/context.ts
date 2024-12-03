@@ -34,6 +34,7 @@ import type { TourProps } from '../tour/interface';
 import type { TransferProps } from '../transfer';
 import type { TreeSelectProps } from '../tree-select';
 import type { RenderEmptyHandler } from './defaultRenderEmpty';
+import type { DescriptionsProps } from '../descriptions';
 
 export const defaultPrefixCls = 'ant';
 export const defaultIconPrefixCls = 'anticon';
@@ -115,10 +116,6 @@ export interface ThemeConfig {
 export interface ComponentStyleConfig {
   className?: string;
   style?: React.CSSProperties;
-  styles?: {
-    label?: React.CSSProperties;
-    content?: React.CSSProperties;
-  };
 }
 
 export interface TableConfig extends ComponentStyleConfig {
@@ -136,6 +133,9 @@ export type CollapseConfig = ComponentStyleConfig & Pick<CollapseProps, 'expandI
 export type MenuConfig = ComponentStyleConfig & Pick<MenuProps, 'expandIcon'>;
 
 export type TourConfig = Pick<TourProps, 'closeIcon'>;
+
+export type DescriptionsConfig = ComponentStyleConfig &
+  Pick<DescriptionsProps, 'classNames' | 'styles'>;
 
 export type ModalConfig = ComponentStyleConfig &
   Pick<ModalProps, 'classNames' | 'styles' | 'closeIcon' | 'closable'>;
@@ -277,7 +277,7 @@ export interface ConfigConsumerProps {
   breadcrumb?: ComponentStyleConfig;
   menu?: MenuConfig;
   checkbox?: ComponentStyleConfig;
-  descriptions?: ComponentStyleConfig;
+  descriptions?: DescriptionsConfig;
   empty?: ComponentStyleConfig;
   badge?: BadgeConfig;
   radio?: ComponentStyleConfig;
