@@ -56,11 +56,10 @@ export interface DropdownProps {
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
   prefixCls?: string;
   className?: string;
+  style?: React.CSSProperties;
   rootClassName?: string;
   transitionName?: string;
   placement?: Placement;
-  overlayClassName?: string;
-  overlayStyle?: React.CSSProperties;
   forceRender?: boolean;
   mouseEnterDelay?: number;
   mouseLeaveDelay?: number;
@@ -75,6 +74,10 @@ export interface DropdownProps {
   visible?: boolean;
   /** @deprecated Please use `onOpenChange` instead */
   onVisibleChange?: (open: boolean) => void;
+  /** @deprecated Please use `style` instead */
+  overlayStyle?: React.CSSProperties;
+  /** @deprecated Please use `overlayClassName` instead */
+  overlayClassName?: string;
 }
 
 type CompoundedComponent = React.FC<DropdownProps> & {
@@ -105,6 +108,8 @@ const Dropdown: CompoundedComponent = (props) => {
     placement = '',
     overlay,
     transitionName,
+    style: dropdownStyle,
+    className: dropdownClassName,
   } = props;
   const {
     getPopupContainer: getContextPopupContainer,
@@ -120,6 +125,8 @@ const Dropdown: CompoundedComponent = (props) => {
     [
       ['visible', 'open'],
       ['onVisibleChange', 'onOpenChange'],
+      ['overlayStyle', 'style'],
+      ['overlayClassName', 'className'],
     ].forEach(([deprecatedName, newName]) => {
       warning.deprecated(!(deprecatedName in props), deprecatedName, newName);
     });
@@ -209,6 +216,7 @@ const Dropdown: CompoundedComponent = (props) => {
     cssVarCls,
     rootCls,
     dropdown?.className,
+    dropdownClassName,
     { [`${prefixCls}-rtl`]: direction === 'rtl' },
   );
 
@@ -294,7 +302,7 @@ const Dropdown: CompoundedComponent = (props) => {
       overlay={renderOverlay}
       placement={memoPlacement}
       onVisibleChange={onInnerOpenChange}
-      overlayStyle={{ ...dropdown?.style, ...overlayStyle, zIndex }}
+      overlayStyle={{ ...dropdown?.style, ...overlayStyle, ...dropdownStyle, zIndex }}
     >
       {dropdownTrigger}
     </RcDropdown>

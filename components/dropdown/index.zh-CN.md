@@ -56,8 +56,8 @@ demo:
 | dropdownRender | 自定义下拉框内容 | (menus: ReactNode) => ReactNode | - | 4.24.0 |
 | getPopupContainer | 菜单渲染父节点。默认渲染到 body 上，如果你遇到菜单滚动定位问题，试试修改为滚动的区域，并相对其定位。[示例](https://codepen.io/afc163/pen/zEjNOy?editors=0010) | (triggerNode: HTMLElement) => HTMLElement | () => document.body |  |
 | menu | 菜单配置项 | [MenuProps](/components/menu-cn#api) | - | 4.24.0 |
-| overlayClassName | 下拉根元素的类名称 | string | - |  |
-| overlayStyle | 下拉根元素的样式 | CSSProperties | - |  |
+| className | 下拉根元素的类名称 | string | - |  |
+| style | 下拉根元素的样式 | CSSProperties | - |  |
 | placement | 菜单弹出位置：`bottom` `bottomLeft` `bottomRight` `top` `topLeft` `topRight` | string | `bottomLeft` |  |
 | trigger | 触发下拉的行为，移动端不支持 hover | Array&lt;`click`\|`hover`\|`contextMenu`> | \[`hover`] |  |
 | open | 菜单是否显示，小于 4.23.0 使用 `visible`（[为什么?](/docs/react/faq#弹层类组件为什么要统一至-open-属性)） | boolean | - | 4.23.0 |

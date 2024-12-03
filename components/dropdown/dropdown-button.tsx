@@ -69,6 +69,7 @@ const DropdownButton: CompoundedComponent = (props) => {
     overlayStyle,
     destroyPopupOnHide,
     dropdownRender,
+    style,
     ...restProps
   } = props;
 
@@ -87,9 +88,9 @@ const DropdownButton: CompoundedComponent = (props) => {
     mouseEnterDelay,
     mouseLeaveDelay,
     overlayClassName,
-    overlayStyle,
     destroyPopupOnHide,
     dropdownRender,
+    style: { ...overlayStyle, ...style },
   };
 
   const { compactSize, compactItemClassnames } = useCompactItemContext(prefixCls, direction);
