@@ -35,6 +35,7 @@ import type { TourProps } from '../tour/interface';
 import type { TransferProps } from '../transfer';
 import type { TreeSelectProps } from '../tree-select';
 import type { RenderEmptyHandler } from './defaultRenderEmpty';
+import type { EmptyProps } from '../empty';
 
 export const defaultPrefixCls = 'ant';
 export const defaultIconPrefixCls = 'anticon';
@@ -133,6 +134,8 @@ export type CollapseConfig = ComponentStyleConfig & Pick<CollapseProps, 'expandI
 export type MenuConfig = ComponentStyleConfig & Pick<MenuProps, 'expandIcon'>;
 
 export type TourConfig = Pick<TourProps, 'closeIcon'>;
+
+export type EmptyConfig = ComponentStyleConfig & Pick<EmptyProps, 'classNames' | 'styles'>;
 
 export type ModalConfig = ComponentStyleConfig &
   Pick<ModalProps, 'classNames' | 'styles' | 'closeIcon' | 'closable'>;
@@ -277,7 +280,7 @@ export interface ConfigConsumerProps {
   menu?: MenuConfig;
   checkbox?: ComponentStyleConfig;
   descriptions?: ComponentStyleConfig;
-  empty?: ComponentStyleConfig;
+  empty?: EmptyConfig;
   badge?: BadgeConfig;
   radio?: ComponentStyleConfig;
   rate?: ComponentStyleConfig;

@@ -56,6 +56,7 @@ import type {
   TreeSelectConfig,
   Variant,
   WaveConfig,
+  EmptyConfig,
 } from './context';
 import {
   ConfigConsumer,
@@ -208,7 +209,7 @@ export interface ConfigProviderProps {
   floatButtonGroup?: FloatButtonGroupConfig;
   checkbox?: ComponentStyleConfig;
   descriptions?: ComponentStyleConfig;
-  empty?: ComponentStyleConfig;
+  empty?: EmptyConfig;
   badge?: BadgeConfig;
   radio?: ComponentStyleConfig;
   rate?: ComponentStyleConfig;
