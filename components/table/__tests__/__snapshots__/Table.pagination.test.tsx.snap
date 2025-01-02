@@ -537,7 +537,7 @@ exports[`Table.pagination should not crash when trigger onChange in render 1`] =
                       class="ant-empty ant-empty-normal"
                     >
                       <div
-                        class="ant-empty-image"
+                        class="ant-empty-icon"
                       >
                         <svg
                           height="41"

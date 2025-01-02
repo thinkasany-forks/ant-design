@@ -17,7 +17,7 @@ exports[`List rtl render component should be rendered correctly in RTL direction
           class="ant-empty ant-empty-normal ant-empty-rtl"
         >
           <div
-            class="ant-empty-image"
+            class="ant-empty-icon"
           >
             <svg
               height="41"

@@ -7,13 +7,13 @@ import useLocale from '../../../.dumi/hooks/useLocale';
 const locales = {
   cn: {
     root: '根元素',
-    icon: '图片元素',
+    icon: '图标元素',
     description: '描述元素',
     footer: '底部元素',
   },
   en: {
     root: 'Root element',
-    icon: 'Image element',
+    icon: 'Icon element',
     description: 'Description element',
     footer: 'Footer element',
   },

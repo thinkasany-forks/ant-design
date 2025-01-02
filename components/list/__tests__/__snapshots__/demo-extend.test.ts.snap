@@ -775,7 +775,7 @@ Array [
             class="ant-empty ant-empty-normal"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -1712,7 +1712,7 @@ exports[`renders components/list/demo/infinite-load.tsx extend context correctly
                 class="ant-empty ant-empty-normal"
               >
                 <div
-                  class="ant-empty-image"
+                  class="ant-empty-icon"
                 >
                   <svg
                     height="41"

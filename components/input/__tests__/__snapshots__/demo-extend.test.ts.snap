@@ -523,7 +523,7 @@ exports[`renders components/input/demo/addon.tsx extend context correctly 1`] = 
                           class="ant-empty ant-empty-normal ant-empty-small"
                         >
                           <div
-                            class="ant-empty-image"
+                            class="ant-empty-icon"
                           >
                             <svg
                               height="41"
@@ -3546,7 +3546,7 @@ Array [
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"

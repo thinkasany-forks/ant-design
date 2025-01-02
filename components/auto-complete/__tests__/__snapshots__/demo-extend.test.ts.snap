@@ -784,7 +784,7 @@ exports[`renders components/auto-complete/demo/form-debug.tsx extend context cor
                       class="ant-empty ant-empty-normal ant-empty-small"
                     >
                       <div
-                        class="ant-empty-image"
+                        class="ant-empty-icon"
                       >
                         <svg
                           height="41"
@@ -939,7 +939,7 @@ exports[`renders components/auto-complete/demo/form-debug.tsx extend context cor
                         class="ant-empty ant-empty-normal ant-empty-small"
                       >
                         <div
-                          class="ant-empty-image"
+                          class="ant-empty-icon"
                         >
                           <svg
                             height="41"
@@ -1240,7 +1240,7 @@ exports[`renders components/auto-complete/demo/form-debug.tsx extend context cor
                         class="ant-empty ant-empty-normal ant-empty-small"
                       >
                         <div
-                          class="ant-empty-image"
+                          class="ant-empty-icon"
                         >
                           <svg
                             height="41"
@@ -1467,7 +1467,7 @@ exports[`renders components/auto-complete/demo/form-debug.tsx extend context cor
                         class="ant-empty ant-empty-normal ant-empty-small"
                       >
                         <div
-                          class="ant-empty-image"
+                          class="ant-empty-icon"
                         >
                           <svg
                             height="41"
@@ -1707,7 +1707,7 @@ exports[`renders components/auto-complete/demo/form-debug.tsx extend context cor
                         class="ant-empty ant-empty-normal ant-empty-small"
                       >
                         <div
-                          class="ant-empty-image"
+                          class="ant-empty-icon"
                         >
                           <svg
                             height="41"

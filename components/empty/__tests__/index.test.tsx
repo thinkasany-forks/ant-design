@@ -12,8 +12,8 @@ describe('Empty', () => {
   rtlTest(Empty);
 
   it('image size should change', () => {
-    const { container } = render(<Empty imageStyle={{ height: 20 }} />);
-    expect(container.querySelector<HTMLDivElement>('.ant-empty-image')?.style.height).toBe('20px');
+    const { container } = render(<Empty styles={{ icon: { height: 20 } }} />);
+    expect(container.querySelector<HTMLDivElement>('.ant-empty-icon')?.style.height).toBe('20px');
   });
 
   it('description can be false', () => {
@@ -77,7 +77,7 @@ describe('Empty', () => {
     const emptyDescriptionElement = container.querySelector(
       '.ant-empty-description',
     ) as HTMLElement;
-    const emptyIconElement = container.querySelector('.ant-empty-image') as HTMLElement;
+    const emptyIconElement = container.querySelector('.ant-empty-icon') as HTMLElement;
 
     // check classNames
     expect(emptyElement.classList).toContain('custom-root');

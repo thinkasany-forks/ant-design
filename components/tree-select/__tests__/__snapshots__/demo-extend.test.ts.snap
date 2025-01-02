@@ -2022,7 +2022,7 @@ exports[`renders components/tree-select/demo/status.tsx extend context correctly
               class="ant-empty ant-empty-normal ant-empty-small"
             >
               <div
-                class="ant-empty-image"
+                class="ant-empty-icon"
               >
                 <svg
                   height="41"
@@ -2165,7 +2165,7 @@ exports[`renders components/tree-select/demo/status.tsx extend context correctly
               class="ant-empty ant-empty-normal ant-empty-small"
             >
               <div
-                class="ant-empty-image"
+                class="ant-empty-icon"
               >
                 <svg
                   height="41"

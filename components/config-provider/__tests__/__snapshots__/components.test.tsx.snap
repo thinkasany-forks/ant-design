@@ -15131,7 +15131,7 @@ exports[`ConfigProvider components Empty configProvider 1`] = `
   class="config-empty"
 >
   <div
-    class="config-empty-image"
+    class="config-empty-icon"
   >
     <svg
       height="152"
@@ -15209,7 +15209,7 @@ exports[`ConfigProvider components Empty configProvider componentDisabled 1`] = 
   class="config-empty"
 >
   <div
-    class="config-empty-image"
+    class="config-empty-icon"
   >
     <svg
       height="152"
@@ -15287,7 +15287,7 @@ exports[`ConfigProvider components Empty configProvider componentSize large 1`] 
   class="config-empty"
 >
   <div
-    class="config-empty-image"
+    class="config-empty-icon"
   >
     <svg
       height="152"
@@ -15365,7 +15365,7 @@ exports[`ConfigProvider components Empty configProvider componentSize middle 1`]
   class="config-empty"
 >
   <div
-    class="config-empty-image"
+    class="config-empty-icon"
   >
     <svg
       height="152"
@@ -15443,7 +15443,7 @@ exports[`ConfigProvider components Empty configProvider componentSize small 1`] 
   class="config-empty"
 >
   <div
-    class="config-empty-image"
+    class="config-empty-icon"
   >
     <svg
       height="152"
@@ -15521,7 +15521,7 @@ exports[`ConfigProvider components Empty normal 1`] = `
   class="ant-empty"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="152"
@@ -15599,7 +15599,7 @@ exports[`ConfigProvider components Empty prefixCls 1`] = `
   class="prefix-Empty"
 >
   <div
-    class="prefix-Empty-image"
+    class="prefix-Empty-icon"
   >
     <svg
       height="152"
@@ -27030,7 +27030,7 @@ exports[`ConfigProvider components Table configProvider 1`] = `
                       class="config-empty config-empty-normal"
                     >
                       <div
-                        class="config-empty-image"
+                        class="config-empty-icon"
                       >
                         <svg
                           height="41"
@@ -27339,7 +27339,7 @@ exports[`ConfigProvider components Table configProvider componentDisabled 1`] = 
                       class="config-empty config-empty-normal"
                     >
                       <div
-                        class="config-empty-image"
+                        class="config-empty-icon"
                       >
                         <svg
                           height="41"
@@ -27646,7 +27646,7 @@ exports[`ConfigProvider components Table configProvider componentSize large 1`] 
                       class="config-empty config-empty-normal"
                     >
                       <div
-                        class="config-empty-image"
+                        class="config-empty-icon"
                       >
                         <svg
                           height="41"
@@ -27953,7 +27953,7 @@ exports[`ConfigProvider components Table configProvider componentSize middle 1`]
                       class="config-empty config-empty-normal"
                     >
                       <div
-                        class="config-empty-image"
+                        class="config-empty-icon"
                       >
                         <svg
                           height="41"
@@ -28260,7 +28260,7 @@ exports[`ConfigProvider components Table configProvider componentSize small 1`] 
                       class="config-empty config-empty-normal"
                     >
                       <div
-                        class="config-empty-image"
+                        class="config-empty-icon"
                       >
                         <svg
                           height="41"
@@ -28567,7 +28567,7 @@ exports[`ConfigProvider components Table normal 1`] = `
                       class="ant-empty ant-empty-normal"
                     >
                       <div
-                        class="ant-empty-image"
+                        class="ant-empty-icon"
                       >
                         <svg
                           height="41"
@@ -28874,7 +28874,7 @@ exports[`ConfigProvider components Table prefixCls 1`] = `
                       class="ant-empty ant-empty-normal"
                     >
                       <div
-                        class="ant-empty-image"
+                        class="ant-empty-icon"
                       >
                         <svg
                           height="41"
@@ -39500,7 +39500,7 @@ exports[`ConfigProvider components Transfer configProvider 1`] = `
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -39670,7 +39670,7 @@ exports[`ConfigProvider components Transfer configProvider 1`] = `
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -39785,7 +39785,7 @@ exports[`ConfigProvider components Transfer configProvider componentDisabled 1`]
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -39955,7 +39955,7 @@ exports[`ConfigProvider components Transfer configProvider componentDisabled 1`]
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -40070,7 +40070,7 @@ exports[`ConfigProvider components Transfer configProvider componentSize large 1
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -40240,7 +40240,7 @@ exports[`ConfigProvider components Transfer configProvider componentSize large 1
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -40355,7 +40355,7 @@ exports[`ConfigProvider components Transfer configProvider componentSize middle 
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -40525,7 +40525,7 @@ exports[`ConfigProvider components Transfer configProvider componentSize middle 
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -40640,7 +40640,7 @@ exports[`ConfigProvider components Transfer configProvider componentSize small 1
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -40810,7 +40810,7 @@ exports[`ConfigProvider components Transfer configProvider componentSize small 1
           class="config-empty config-empty-normal config-empty-small"
         >
           <div
-            class="config-empty-image"
+            class="config-empty-icon"
           >
             <svg
               height="41"
@@ -40925,7 +40925,7 @@ exports[`ConfigProvider components Transfer normal 1`] = `
           class="ant-empty ant-empty-normal ant-empty-small"
         >
           <div
-            class="ant-empty-image"
+            class="ant-empty-icon"
           >
             <svg
               height="41"
@@ -41095,7 +41095,7 @@ exports[`ConfigProvider components Transfer normal 1`] = `
           class="ant-empty ant-empty-normal ant-empty-small"
         >
           <div
-            class="ant-empty-image"
+            class="ant-empty-icon"
           >
             <svg
               height="41"
@@ -41210,7 +41210,7 @@ exports[`ConfigProvider components Transfer prefixCls 1`] = `
           class="ant-empty ant-empty-normal ant-empty-small"
         >
           <div
-            class="ant-empty-image"
+            class="ant-empty-icon"
           >
             <svg
               height="41"
@@ -41380,7 +41380,7 @@ exports[`ConfigProvider components Transfer prefixCls 1`] = `
           class="ant-empty ant-empty-normal ant-empty-small"
         >
           <div
-            class="ant-empty-image"
+            class="ant-empty-icon"
           >
             <svg
               height="41"

@@ -5,7 +5,7 @@ exports[`Empty rtl render component should be rendered correctly in RTL directio
   class="ant-empty ant-empty-rtl"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="152"
@@ -83,7 +83,7 @@ exports[`Empty should render in RTL direction 1`] = `
   class="ant-empty ant-empty-rtl"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="152"

@@ -701,7 +701,7 @@ exports[`renders components/input-number/demo/addon.tsx extend context correctly
                           class="ant-empty ant-empty-normal ant-empty-small"
                         >
                           <div
-                            class="ant-empty-image"
+                            class="ant-empty-icon"
                           >
                             <svg
                               height="41"

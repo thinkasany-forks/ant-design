@@ -2820,7 +2820,7 @@ Array [
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -3063,7 +3063,7 @@ Array [
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -3315,7 +3315,7 @@ Array [
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -3625,7 +3625,7 @@ Array [
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -9622,7 +9622,7 @@ exports[`renders components/transfer/demo/status.tsx extend context correctly 1`
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -9865,7 +9865,7 @@ exports[`renders components/transfer/demo/status.tsx extend context correctly 1`
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -10117,7 +10117,7 @@ exports[`renders components/transfer/demo/status.tsx extend context correctly 1`
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -10427,7 +10427,7 @@ exports[`renders components/transfer/demo/status.tsx extend context correctly 1`
             class="ant-empty ant-empty-normal ant-empty-small"
           >
             <div
-              class="ant-empty-image"
+              class="ant-empty-icon"
             >
               <svg
                 height="41"
@@ -11695,7 +11695,7 @@ exports[`renders components/transfer/demo/table-transfer.tsx extend context corr
                                 class="ant-empty ant-empty-normal"
                               >
                                 <div
-                                  class="ant-empty-image"
+                                  class="ant-empty-icon"
                                 >
                                   <svg
                                     height="41"
@@ -12181,7 +12181,7 @@ exports[`renders components/transfer/demo/tree-transfer.tsx extend context corre
           class="ant-empty ant-empty-normal ant-empty-small"
         >
           <div
-            class="ant-empty-image"
+            class="ant-empty-icon"
           >
             <svg
               height="41"

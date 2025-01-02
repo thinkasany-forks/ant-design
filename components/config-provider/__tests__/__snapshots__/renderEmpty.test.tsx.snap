@@ -5,7 +5,7 @@ exports[`renderEmpty should render Cascader empty 1`] = `
   class="ant-empty ant-empty-normal ant-empty-small"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="41"
@@ -56,7 +56,7 @@ exports[`renderEmpty should render List empty 1`] = `
   class="ant-empty ant-empty-normal"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="41"
@@ -107,7 +107,7 @@ exports[`renderEmpty should render Mentions empty 1`] = `
   class="ant-empty ant-empty-normal ant-empty-small"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="41"
@@ -158,7 +158,7 @@ exports[`renderEmpty should render Select empty 1`] = `
   class="ant-empty ant-empty-normal ant-empty-small"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="41"
@@ -209,7 +209,7 @@ exports[`renderEmpty should render Table empty 1`] = `
   class="ant-empty ant-empty-normal"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="41"
@@ -262,7 +262,7 @@ exports[`renderEmpty should render Transfer empty 1`] = `
   class="ant-empty ant-empty-normal ant-empty-small"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="41"
@@ -313,7 +313,7 @@ exports[`renderEmpty should render TreeSelect empty 1`] = `
   class="ant-empty ant-empty-normal ant-empty-small"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="41"
@@ -364,7 +364,7 @@ exports[`renderEmpty should return empty when componentName is not matched 1`] =
   class="ant-empty"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="152"

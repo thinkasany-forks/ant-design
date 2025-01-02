@@ -17,7 +17,7 @@ exports[`List renders empty list 1`] = `
           class="ant-empty ant-empty-normal"
         >
           <div
-            class="ant-empty-image"
+            class="ant-empty-icon"
           >
             <svg
               height="41"

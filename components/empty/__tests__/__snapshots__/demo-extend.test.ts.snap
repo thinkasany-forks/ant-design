@@ -5,7 +5,7 @@ exports[`renders components/empty/demo/basic.tsx extend context correctly 1`] = 
   class="ant-empty"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="152"
@@ -1024,7 +1024,7 @@ exports[`renders components/empty/demo/customize.tsx extend context correctly 1`
   class="ant-empty"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
     style="height: 60px;"
   >
     <img
@@ -1068,7 +1068,7 @@ exports[`renders components/empty/demo/description.tsx extend context correctly 
   class="ant-empty"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="152"
@@ -1143,7 +1143,7 @@ exports[`renders components/empty/demo/simple.tsx extend context correctly 1`] =
   class="ant-empty ant-empty-normal"
 >
   <div
-    class="ant-empty-image"
+    class="ant-empty-icon"
   >
     <svg
       height="41"
