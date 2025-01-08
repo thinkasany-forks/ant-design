@@ -7,7 +7,7 @@ import { ConfigContext } from '../config-provider';
 import { Col } from '../grid';
 import { ListContext } from './context';
 
-export type ListItemSemanticName = 'root' | 'header' | 'footer' | 'actions' | 'extra';
+export type ListItemSemanticName = 'actions' | 'extra';
 
 export interface ListItemProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -143,9 +143,10 @@ const InternalItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, ref
     extra,
     styles,
     className,
+    style,
     classNames: customizeClassNames,
     colStyle,
-    ...others
+    ...restProps
   } = props;
   const { grid, itemLayout } = useContext(ListContext);
   const { getPrefixCls, list } = useContext(ConfigContext);
@@ -194,7 +195,7 @@ const InternalItem = React.forwardRef<HTMLDivElement, ListItemProps>((props, ref
   const Element = grid ? 'div' : 'li';
   const itemChildren = (
     <Element
-      {...(others as any)} // `li` element `onCopy` prop args is not same as `div`
+      {...(restProps as any)} // `li` element `onCopy` prop args is not same as `div`
       {...(!grid ? { ref } : {})}
       className={classNames(
         `${prefixCls}-item`,

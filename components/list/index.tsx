@@ -16,7 +16,6 @@ import type { SpinProps } from '../spin';
 import Spin from '../spin';
 import { ListContext } from './context';
 import Item from './Item';
-import type { ListItemSemanticName } from './Item';
 import useStyle from './style';
 
 export type { ListItemMetaProps, ListItemProps } from './Item';
@@ -41,6 +40,8 @@ export type ListSize = 'small' | 'default' | 'large';
 
 export type ListItemLayout = 'horizontal' | 'vertical';
 
+export type ListSemanticName = 'root' | 'header' | 'footer';
+
 export interface ListProps<T> {
   bordered?: boolean;
   className?: string;
@@ -63,8 +64,8 @@ export interface ListProps<T> {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   locale?: ListLocale;
-  classNames?: Partial<Record<ListItemSemanticName, string>>;
-  styles?: Partial<Record<ListItemSemanticName, React.CSSProperties>>;
+  classNames?: Partial<Record<ListSemanticName, string>>;
+  styles?: Partial<Record<ListSemanticName, React.CSSProperties>>;
 }
 
 export interface ListLocale {
@@ -93,13 +94,12 @@ function InternalList<T>(
     renderItem,
     locale,
     styles,
-    classNames: listItemClassNames,
+    classNames: listClassNames,
     ...restProps
   }: ListProps<T>,
   ref: React.ForwardedRef<HTMLDivElement>,
 ) {
   const paginationObj = pagination && typeof pagination === 'object' ? pagination : {};
-
   const [paginationCurrent, setPaginationCurrent] = React.useState(
     paginationObj.defaultCurrent || 1,
   );
@@ -193,8 +193,8 @@ function InternalList<T>(
     rootClassName,
     hashId,
     cssVarCls,
-    list?.item?.classNames?.root,
-    listItemClassNames?.root,
+    list?.classNames?.root,
+    listClassNames?.root,
   );
 
   const paginationProps = extendsObject<PaginationConfig>(
@@ -292,7 +292,7 @@ function InternalList<T>(
     <ListContext.Provider value={contextValue}>
       <div
         ref={ref}
-        style={{ ...list?.item?.styles?.root, ...list?.style, ...styles?.root, ...style }}
+        style={{ ...list?.styles?.root, ...list?.style, ...styles?.root, ...style }}
         className={rootClassNames}
         {...restProps}
       >
@@ -301,10 +301,10 @@ function InternalList<T>(
           <div
             className={classNames(
               `${prefixCls}-header`,
-              list?.item?.classNames?.header,
-              listItemClassNames?.header,
+              list?.classNames?.header,
+              listClassNames?.header,
             )}
-            style={{ ...list?.item?.styles?.header, ...styles?.header }}
+            style={{ ...list?.styles?.header, ...styles?.header }}
           >
             {header}
           </div>
@@ -317,11 +317,11 @@ function InternalList<T>(
           <div
             className={classNames(
               `${prefixCls}-footer`,
-              list?.item?.classNames?.footer,
-              listItemClassNames?.footer,
+              list?.classNames?.footer,
+              listClassNames?.footer,
             )}
             style={{
-              ...list?.item?.styles?.footer,
+              ...list?.styles?.footer,
               ...styles?.footer,
             }}
           >

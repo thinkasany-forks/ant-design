@@ -47,6 +47,7 @@ const BlockList: React.FC<React.PropsWithChildren> = (props) => {
       Simple <Switch onChange={onChange} />
       {simple ? (
         <List
+          {...props}
           style={{ marginTop: 20 }}
           header={<div>Header</div>}
           footer={<div>Footer</div>}
@@ -66,6 +67,7 @@ const BlockList: React.FC<React.PropsWithChildren> = (props) => {
         />
       ) : (
         <List
+          {...props}
           itemLayout="vertical"
           size="large"
           dataSource={data}

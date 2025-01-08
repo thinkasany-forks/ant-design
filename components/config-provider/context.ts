@@ -17,7 +17,7 @@ import type { FloatButtonGroupProps } from '../float-button/interface';
 import type { FormProps } from '../form/Form';
 import type { InputProps, TextAreaProps } from '../input';
 import type { InputNumberProps } from '../input-number';
-import type { ListItemMetaProps, ListItemProps } from '../list';
+import type { ListItemMetaProps, ListItemProps, ListProps } from '../list';
 import type { Locale } from '../locale';
 import type { MentionsProps } from '../mentions';
 import type { MenuProps } from '../menu';
@@ -222,7 +222,9 @@ export type MentionsConfig = ComponentStyleConfig & Pick<MentionsProps, 'variant
 
 export type PopupOverflow = 'viewport' | 'scroll';
 
-export interface ListConfig extends ComponentStyleConfig {
+export interface ListConfig
+  extends ComponentStyleConfig,
+    Pick<ListProps<any>, 'classNames' | 'styles'> {
   item?: Pick<ListItemProps, 'classNames' | 'styles'>;
 }
 
