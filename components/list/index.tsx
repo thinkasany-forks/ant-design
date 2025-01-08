@@ -16,6 +16,7 @@ import type { SpinProps } from '../spin';
 import Spin from '../spin';
 import { ListContext } from './context';
 import Item from './Item';
+import type { ListItemSemanticName } from './Item';
 import useStyle from './style';
 
 export type { ListItemMetaProps, ListItemProps } from './Item';
@@ -62,6 +63,8 @@ export interface ListProps<T> {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   locale?: ListLocale;
+  classNames?: Partial<Record<ListItemSemanticName, string>>;
+  styles?: Partial<Record<ListItemSemanticName, React.CSSProperties>>;
 }
 
 export interface ListLocale {
@@ -89,7 +92,9 @@ function InternalList<T>(
     rowKey,
     renderItem,
     locale,
-    ...rest
+    styles,
+    classNames: listItemClassNames,
+    ...restProps
   }: ListProps<T>,
   ref: React.ForwardedRef<HTMLDivElement>,
 ) {
@@ -171,7 +176,7 @@ function InternalList<T>(
       break;
   }
 
-  const classString = classNames(
+  const rootClassNames = classNames(
     prefixCls,
     {
       [`${prefixCls}-vertical`]: itemLayout === 'vertical',
@@ -188,6 +193,8 @@ function InternalList<T>(
     rootClassName,
     hashId,
     cssVarCls,
+    list?.item?.classNames?.root,
+    listItemClassNames?.root,
   );
 
   const paginationProps = extendsObject<PaginationConfig>(
@@ -283,14 +290,44 @@ function InternalList<T>(
 
   return wrapCSSVar(
     <ListContext.Provider value={contextValue}>
-      <div ref={ref} style={{ ...list?.style, ...style }} className={classString} {...rest}>
+      <div
+        ref={ref}
+        style={{ ...list?.item?.styles?.root, ...list?.style, ...styles?.root, ...style }}
+        className={rootClassNames}
+        {...restProps}
+      >
         {(paginationPosition === 'top' || paginationPosition === 'both') && paginationContent}
-        {header && <div className={`${prefixCls}-header`}>{header}</div>}
+        {header && (
+          <div
+            className={classNames(
+              `${prefixCls}-header`,
+              list?.item?.classNames?.header,
+              listItemClassNames?.header,
+            )}
+            style={{ ...list?.item?.styles?.header, ...styles?.header }}
+          >
+            {header}
+          </div>
+        )}
         <Spin {...loadingProp}>
           {childrenContent}
           {children}
         </Spin>
-        {footer && <div className={`${prefixCls}-footer`}>{footer}</div>}
+        {footer && (
+          <div
+            className={classNames(
+              `${prefixCls}-footer`,
+              list?.item?.classNames?.footer,
+              listItemClassNames?.footer,
+            )}
+            style={{
+              ...list?.item?.styles?.footer,
+              ...styles?.footer,
+            }}
+          >
+            {footer}
+          </div>
+        )}
         {loadMore ||
           ((paginationPosition === 'bottom' || paginationPosition === 'both') && paginationContent)}
       </div>

@@ -92,7 +92,13 @@ More about pagination, please check [`Pagination`](/components/pagination/).
 
 ## Semantic DOM
 
+### List
+
 <code src="./demo/_semantic.tsx" simplify="true"></code>
+
+### List.Meta
+
+<code src="./demo/_semantic_meta.tsx" simplify="true"></code>
 
 ## Design Token
 

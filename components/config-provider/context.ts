@@ -17,7 +17,7 @@ import type { FloatButtonGroupProps } from '../float-button/interface';
 import type { FormProps } from '../form/Form';
 import type { InputProps, TextAreaProps } from '../input';
 import type { InputNumberProps } from '../input-number';
-import type { ListItemProps } from '../list';
+import type { ListItemMetaProps, ListItemProps } from '../list';
 import type { Locale } from '../locale';
 import type { MentionsProps } from '../mentions';
 import type { MenuProps } from '../menu';
@@ -31,6 +31,7 @@ import type { SelectProps } from '../select';
 import type { SliderProps } from '../slider';
 import type { SpaceProps } from '../space';
 import type { SpinProps } from '../spin';
+import type { StatisticProps } from '../statistic';
 import type { TableProps } from '../table';
 import type { TabsProps } from '../tabs';
 import type { TagProps } from '../tag';
@@ -41,7 +42,7 @@ import type { TourProps } from '../tour/interface';
 import type { TransferProps } from '../transfer';
 import type { TreeSelectProps } from '../tree-select';
 import type { RenderEmptyHandler } from './defaultRenderEmpty';
-import type { StatisticProps } from '../statistic';
+
 export const defaultPrefixCls = 'ant';
 export const defaultIconPrefixCls = 'anticon';
 
@@ -225,6 +226,9 @@ export interface ListConfig extends ComponentStyleConfig {
   item?: Pick<ListItemProps, 'classNames' | 'styles'>;
 }
 
+export type ListMetaConfig = ComponentStyleConfig &
+  Pick<ListItemMetaProps, 'classNames' | 'styles'>;
+
 export const Variants = ['outlined', 'borderless', 'filled'] as const;
 
 export type Variant = (typeof Variants)[number];
@@ -292,6 +296,7 @@ export interface ConfigConsumerProps {
   image?: ImageConfig;
   layout?: ComponentStyleConfig;
   list?: ListConfig;
+  listMeta?: ListMetaConfig;
   mentions?: MentionsConfig;
   modal?: ModalConfig;
   progress?: ComponentStyleConfig;

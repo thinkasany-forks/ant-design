@@ -27,6 +27,7 @@ import type {
   DatePickerConfig,
   DirectionType,
   DrawerConfig,
+  EmptyConfig,
   FlexConfig,
   FloatButtonGroupConfig,
   FormConfig,
@@ -34,11 +35,14 @@ import type {
   InputConfig,
   InputNumberConfig,
   ListConfig,
+  ListMetaConfig,
   MentionsConfig,
   MenuConfig,
   ModalConfig,
   NotificationConfig,
   PaginationConfig,
+  PopconfirmConfig,
+  PopoverConfig,
   PopupOverflow,
   RangePickerConfig,
   SelectConfig,
@@ -52,14 +56,11 @@ import type {
   ThemeConfig,
   TimePickerConfig,
   TooltipConfig,
-  PopoverConfig,
-  PopconfirmConfig,
   TourConfig,
   TransferConfig,
   TreeSelectConfig,
   Variant,
   WaveConfig,
-  EmptyConfig,
 } from './context';
 import {
   ConfigConsumer,
@@ -202,6 +203,7 @@ export interface ConfigProviderProps {
   image?: ImageConfig;
   layout?: ComponentStyleConfig;
   list?: ListConfig;
+  listMeta?: ListMetaConfig;
   mentions?: MentionsConfig;
   modal?: ModalConfig;
   progress?: ComponentStyleConfig;
@@ -361,6 +363,7 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = (props) => {
     image,
     layout,
     list,
+    listMeta,
     mentions,
     modal,
     progress,
@@ -466,6 +469,7 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = (props) => {
     textArea,
     layout,
     list,
+    listMeta,
     mentions,
     modal,
     progress,

@@ -7,24 +7,21 @@ import { ConfigContext } from '../config-provider';
 import { Col } from '../grid';
 import { ListContext } from './context';
 
+export type ListItemSemanticName = 'root' | 'header' | 'footer' | 'actions' | 'extra';
+
 export interface ListItemProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
-  classNames?: {
-    actions?: string;
-    extra?: string;
-  };
   children?: ReactNode;
   prefixCls?: string;
   style?: CSSProperties;
-  styles?: {
-    actions?: CSSProperties;
-    extra?: CSSProperties;
-  };
+  classNames?: Partial<Record<ListItemSemanticName, string>>;
+  styles?: Partial<Record<ListItemSemanticName, React.CSSProperties>>;
   extra?: ReactNode;
   actions?: ReactNode[];
   colStyle?: CSSProperties;
 }
 
+export type ListItemMetaSemanticName = 'root' | 'section' | 'description' | 'title' | 'avatar';
 export interface ListItemMetaProps {
   avatar?: ReactNode;
   className?: string;
@@ -33,6 +30,8 @@ export interface ListItemMetaProps {
   prefixCls?: string;
   style?: CSSProperties;
   title?: ReactNode;
+  classNames?: Partial<Record<ListItemMetaSemanticName, string>>;
+  styles?: Partial<Record<ListItemMetaSemanticName, React.CSSProperties>>;
 }
 
 type ListItemClassNamesModule = keyof Exclude<ListItemProps['classNames'], undefined>;
@@ -44,23 +43,93 @@ export const Meta: FC<ListItemMetaProps> = ({
   avatar,
   title,
   description,
-  ...others
+  style,
+  styles,
+  classNames: metaClassNames,
+  ...restProps
 }) => {
-  const { getPrefixCls } = useContext(ConfigContext);
+  const { getPrefixCls, listMeta } = useContext(ConfigContext);
 
   const prefixCls = getPrefixCls('list', customizePrefixCls);
-  const classString = classNames(`${prefixCls}-item-meta`, className);
+  const rootClassNames = classNames(
+    `${prefixCls}-item-meta`,
+    className,
+    listMeta?.className,
+    metaClassNames?.root,
+    listMeta?.classNames?.root,
+  );
 
   const content = (
-    <div className={`${prefixCls}-item-meta-content`}>
-      {title && <h4 className={`${prefixCls}-item-meta-title`}>{title}</h4>}
-      {description && <div className={`${prefixCls}-item-meta-description`}>{description}</div>}
+    <div
+      className={classNames(
+        `${prefixCls}-item-meta-section`,
+        metaClassNames?.section,
+        listMeta?.classNames?.section,
+      )}
+      style={{
+        ...listMeta?.styles?.section,
+        ...styles?.section,
+      }}
+    >
+      {title && (
+        <h4
+          className={classNames(
+            `${prefixCls}-item-meta-title`,
+            metaClassNames?.title,
+            listMeta?.classNames?.title,
+          )}
+          style={{
+            ...listMeta?.styles?.title,
+            ...styles?.title,
+          }}
+        >
+          {title}
+        </h4>
+      )}
+      {description && (
+        <div
+          className={classNames(
+            `${prefixCls}-item-meta-description`,
+            metaClassNames?.description,
+            listMeta?.classNames?.description,
+          )}
+          style={{
+            ...listMeta?.styles?.description,
+            ...styles?.description,
+          }}
+        >
+          {description}
+        </div>
+      )}
     </div>
   );
 
   return (
-    <div {...others} className={classString}>
-      {avatar && <div className={`${prefixCls}-item-meta-avatar`}>{avatar}</div>}
+    <div
+      {...restProps}
+      className={rootClassNames}
+      style={{
+        ...styles?.root,
+        ...listMeta?.style,
+        ...styles?.root,
+        ...style,
+      }}
+    >
+      {avatar && (
+        <div
+          className={classNames(
+            `${prefixCls}-item-meta-avatar`,
+            listMeta?.classNames?.avatar,
+            metaClassNames?.avatar,
+          )}
+          style={{
+            ...listMeta?.styles?.avatar,
+            ...styles?.avatar,
+          }}
+        >
+          {avatar}
+        </div>
+      )}
       {(title || description) && content}
     </div>
   );
