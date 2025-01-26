@@ -131,11 +131,11 @@ const TourPanel: React.FC<TourPanelProps> = (props) => {
   const [contextLocale] = useLocale('Tour', defaultLocale.Tour);
 
   return (
-    <div
-      className={classNames(`${prefixCls}-content`, tourClassNames?.content)}
-      style={styles?.content}
-    >
-      <div className={classNames(`${prefixCls}-body`, tourClassNames?.body)} style={styles?.body}>
+    <div className={`${prefixCls}-pannel`}>
+      <div
+        className={classNames(`${prefixCls}-section`, tourClassNames?.section)}
+        style={styles?.section}
+      >
         {closable && mergedCloseIcon}
         {coverNode}
         {headerNode}

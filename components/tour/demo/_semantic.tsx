@@ -9,8 +9,7 @@ const locales = {
   cn: {
     root: '根元素',
     cover: '图标元素',
-    content: '内容元素',
-    body: '主体元素',
+    section: '内容元素',
     footer: '底部元素',
     actions: '操作元素',
     indicator: '指示器元素',
@@ -22,8 +21,7 @@ const locales = {
   en: {
     root: 'Root element',
     cover: 'Cover element',
-    content: 'Content element',
-    body: 'Body element',
+    section: 'Section element',
     footer: 'Footer element',
     actions: 'Actions element',
     indicator: 'Indicator element',
@@ -70,8 +68,7 @@ const App: React.FC = () => {
       semantics={[
         { name: 'root', desc: locale.root, version: '6.0.0' },
         { name: 'mask', desc: locale.mask, version: '6.0.0' },
-        { name: 'content', desc: locale.content, version: '6.0.0' },
-        { name: 'body', desc: locale.body, version: '6.0.0' },
+        { name: 'section', desc: locale.section, version: '6.0.0' },
         { name: 'cover', desc: locale.cover, version: '6.0.0' },
         { name: 'header', desc: locale.header, version: '6.0.0' },
         { name: 'title', desc: locale.title, version: '6.0.0' },

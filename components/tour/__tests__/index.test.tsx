@@ -197,7 +197,7 @@ describe('Tour', () => {
     };
     const { getByText, baseElement } = render(<App />);
     expect(getByText('primary description.')).toBeTruthy();
-    expect(baseElement.querySelector('.ant-tour-content')?.parentElement).toHaveClass(
+    expect(baseElement.querySelector('.ant-tour-pannel')?.parentElement).toHaveClass(
       'ant-tour-primary',
     );
     expect(baseElement).toMatchSnapshot();
@@ -233,10 +233,10 @@ describe('Tour', () => {
     };
     const { getByText, container, baseElement } = render(<App />);
     expect(getByText('cover description.')).toBeTruthy();
-    expect(container.querySelector('.ant-tour-primary .ant-tour-content')).toBeFalsy();
+    expect(container.querySelector('.ant-tour-primary .ant-tour-pannel')).toBeFalsy();
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
     expect(getByText('primary description.')).toBeTruthy();
-    expect(container.querySelector('.ant-tour-primary .ant-tour-content')).toBeTruthy();
+    expect(container.querySelector('.ant-tour-primary .ant-tour-pannel')).toBeTruthy();
     expect(baseElement).toMatchSnapshot();
   });
 
@@ -319,7 +319,7 @@ describe('Tour', () => {
     [undefined, null].forEach((total: any) => {
       const { container } = render(<Tour open steps={[{ title: <div>test</div>, total }]} />);
       expect(
-        container.querySelector<HTMLDivElement>('.ant-tour-content .ant-tour-indicators'),
+        container.querySelector<HTMLDivElement>('.ant-tour-pannel .ant-tour-indicators'),
       ).toBeFalsy();
     });
   });
@@ -328,7 +328,7 @@ describe('Tour', () => {
     [undefined, null].forEach((title) => {
       const { container } = render(<Tour open steps={[{ title, total: 1 }]} />);
       expect(
-        container.querySelector<HTMLDivElement>('.ant-tour-content .ant-tour-header'),
+        container.querySelector<HTMLDivElement>('.ant-tour-pannel .ant-tour-header'),
       ).toBeFalsy();
     });
   });
@@ -442,7 +442,7 @@ describe('Tour', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'SetCurrent' }));
     expect(getByText('Primary description.')).toBeTruthy();
-    expect(container.querySelector('.ant-tour-primary .ant-tour-content')).toBeTruthy();
+    expect(container.querySelector('.ant-tour-primary .ant-tour-pannel')).toBeTruthy();
     expect(baseElement).toMatchSnapshot();
   });
 
@@ -713,8 +713,7 @@ describe('Tour', () => {
       actions: 'custom-actions',
       title: 'custom-title',
       header: 'custom-header',
-      content: 'custom-content',
-      body: 'custom-body',
+      section: 'custom-section',
       footer: 'custom-footer',
       description: 'custom-description',
       cover: 'custom-cover',
@@ -726,13 +725,12 @@ describe('Tour', () => {
       actions: { color: 'blue' },
       title: { fontSize: '20px' },
       header: { backgroundColor: 'gray' },
-      content: { padding: '10px' },
-      body: { margin: '5px' },
+      section: { margin: '5px' },
       footer: { borderTop: '1px solid black' },
       description: { fontStyle: 'italic' },
       cover: { color: 'red' },
       indicator: { color: 'green' },
-      root: { color: 'yellow' },
+      root: { backgroundColor: 'yellow' },
     };
     const Demo = () => {
       const btnRef = useRef<HTMLButtonElement>(null);
@@ -769,26 +767,23 @@ describe('Tour', () => {
     };
     render(<Demo />);
 
-    // wait for rc-tour
-    // const maskElement = document.querySelector('.ant-tour-mask') as HTMLElement;
+    const maskElement = document.querySelector('.ant-tour-mask') as HTMLElement;
     const actionsElement = document.querySelector('.ant-tour-actions') as HTMLElement;
     const titleElement = document.querySelector('.ant-tour-title') as HTMLElement;
     const headerElement = document.querySelector('.ant-tour-header') as HTMLElement;
-    const contentElement = document.querySelector('.ant-tour-content') as HTMLElement;
-    const bodyElement = document.querySelector('.ant-tour-body') as HTMLElement;
+    const sectionElement = document.querySelector('.ant-tour-section') as HTMLElement;
     const footerElement = document.querySelector('.ant-tour-footer') as HTMLElement;
     const descriptionElement = document.querySelector('.ant-tour-description') as HTMLElement;
     const coverElement = document.querySelector('.ant-tour-cover') as HTMLElement;
     const indicatorElement = document.querySelector('.ant-tour-indicator') as HTMLElement;
-    const rootElement = document.querySelector('.ant-tour') as HTMLElement;
+    const rootElement = document.querySelector('.ant-tour-mask') as HTMLElement;
 
     // check classNames
-    // expect(maskElement.classList).toContain('custom-mask');
+    expect(maskElement.classList).toContain('custom-mask');
     expect(actionsElement.classList).toContain('custom-actions');
     expect(titleElement.classList).toContain('custom-title');
     expect(headerElement.classList).toContain('custom-header');
-    expect(contentElement.classList).toContain('custom-content');
-    expect(bodyElement.classList).toContain('custom-body');
+    expect(sectionElement.classList).toContain('custom-section');
     expect(footerElement.classList).toContain('custom-footer');
     expect(descriptionElement.classList).toContain('custom-description');
     expect(coverElement.classList).toContain('custom-cover');
@@ -796,16 +791,15 @@ describe('Tour', () => {
     expect(rootElement.classList).toContain('custom-root');
 
     // check styles
-    // expect(maskElement.style.color).toBe('white');
+    expect(maskElement.style.color).toBe('white');
     expect(actionsElement.style.color).toBe('blue');
     expect(titleElement.style.fontSize).toBe('20px');
     expect(headerElement.style.backgroundColor).toBe('gray');
-    expect(contentElement.style.padding).toBe('10px');
-    expect(bodyElement.style.margin).toBe('5px');
+    expect(sectionElement.style.margin).toBe('5px');
     expect(footerElement.style.borderTop).toBe('1px solid black');
     expect(descriptionElement.style.fontStyle).toBe('italic');
     expect(coverElement.style.color).toBe('red');
     expect(indicatorElement.style.color).toBe('green');
-    // expect(rootElement.style.color).toBe('yellow'); // wait for rc-tour
+    expect(rootElement.style.backgroundColor).toBe('yellow');
   });
 });

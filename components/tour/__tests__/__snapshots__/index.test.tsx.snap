@@ -18,10 +18,10 @@ exports[`Tour Primary 1`] = `
         style="position: absolute; top: 0px; left: 0px;"
       />
       <div
-        class="ant-tour-content"
+        class="ant-tour-pannel"
       >
         <div
-          class="ant-tour-body"
+          class="ant-tour-section"
         >
           <button
             class="ant-tour-close"
@@ -223,10 +223,10 @@ exports[`Tour controlled current 1`] = `
       style="--arrow-x: 0px; --arrow-y: 0px; left: -1000vw; top: -1000vh; box-sizing: border-box; z-index: 1001;"
     >
       <div
-        class="ant-tour-content"
+        class="ant-tour-pannel"
       >
         <div
-          class="ant-tour-body"
+          class="ant-tour-section"
         >
           <button
             class="ant-tour-close"
@@ -352,10 +352,10 @@ exports[`Tour custom step pre btn & next btn className & style 1`] = `
   style="--arrow-x: 0px; --arrow-y: 0px; left: -1000vw; top: -1000vh; box-sizing: border-box; z-index: 1001;"
 >
   <div
-    class="ant-tour-content"
+    class="ant-tour-pannel"
   >
     <div
-      class="ant-tour-body"
+      class="ant-tour-section"
     >
       <button
         class="ant-tour-close"
@@ -447,10 +447,10 @@ exports[`Tour should support gap.offset 1`] = `
         style="position: absolute; top: 0px; left: 0px;"
       />
       <div
-        class="ant-tour-content"
+        class="ant-tour-pannel"
       >
         <div
-          class="ant-tour-body"
+          class="ant-tour-section"
         >
           <button
             class="ant-tour-close"
@@ -611,10 +611,10 @@ exports[`Tour single 1`] = `
         style="position: absolute; top: 0px; left: 0px;"
       />
       <div
-        class="ant-tour-content"
+        class="ant-tour-pannel"
       >
         <div
-          class="ant-tour-body"
+          class="ant-tour-section"
         >
           <button
             class="ant-tour-close"
@@ -775,10 +775,10 @@ exports[`Tour step support Primary 1`] = `
         style="position: absolute; top: 0px; left: 0px;"
       />
       <div
-        class="ant-tour-content"
+        class="ant-tour-pannel"
       >
         <div
-          class="ant-tour-body"
+          class="ant-tour-section"
         >
           <button
             class="ant-tour-close"

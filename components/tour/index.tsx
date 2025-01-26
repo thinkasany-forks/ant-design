@@ -74,19 +74,17 @@ const Tour: React.FC<TourProps> & { _InternalPanelDoNotUseOrYouWillBeFired: type
     description: classNames(tour?.classNames?.description, tourClassNames?.description),
     header: classNames(tour?.classNames?.header, tourClassNames?.header),
     title: classNames(tour?.classNames?.title, tourClassNames?.title),
-    content: classNames(tour?.classNames?.content, tourClassNames?.content),
-    body: classNames(tour?.classNames?.body, tourClassNames?.body),
+    section: classNames(tour?.classNames?.section, tourClassNames?.section),
     footer: classNames(tour?.classNames?.footer, tourClassNames?.footer),
   };
 
   const RCTourStyles = {
-    mask: { ...tour?.styles?.mask, ...styles?.mask },
+    mask: { ...tour?.styles?.root, ...tour?.styles?.mask, ...styles?.root, ...styles?.mask },
     actions: { ...tour?.styles?.actions, ...styles?.actions },
     description: { ...tour?.styles?.description, ...styles?.description },
     header: { ...tour?.styles?.header, ...styles?.header },
     title: { ...tour?.styles?.title, ...styles?.title },
-    content: { ...tour?.styles?.content, ...styles?.content },
-    body: { ...tour?.styles?.body, ...styles?.body },
+    section: { ...tour?.styles?.section, ...styles?.section },
     footer: { ...tour?.styles?.footer, ...styles?.footer },
   };
 
@@ -121,8 +119,8 @@ const Tour: React.FC<TourProps> & { _InternalPanelDoNotUseOrYouWillBeFired: type
       <zIndexContext.Provider value={contextZIndex}>
         <RCTour
           {...restProps}
-          // styles={RCTourStyles}
-          // classNames={RCTourClassNames}
+          styles={RCTourStyles}
+          classNames={RCTourClassNames}
           closeIcon={closeIcon ?? tour?.closeIcon}
           zIndex={zIndex}
           rootClassName={customClassName}

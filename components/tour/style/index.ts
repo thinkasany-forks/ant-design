@@ -90,11 +90,11 @@ const genBaseStyle: GenerateStyle<TourToken> = (token) => {
         },
 
         // ============================= panel content ============================
-        [`${componentCls}-content`]: {
+        [`${componentCls}-pannel`]: {
           position: 'relative',
         },
 
-        [`${componentCls}-body`]: {
+        [`${componentCls}-section`]: {
           textAlign: 'start',
           textDecoration: 'none',
           borderRadius: tourBorderRadius,
@@ -191,7 +191,7 @@ const genBaseStyle: GenerateStyle<TourToken> = (token) => {
         [`${componentCls}-primary, &${componentCls}-primary`]: {
           '--antd-arrow-background-color': colorPrimary,
 
-          [`${componentCls}-body`]: {
+          [`${componentCls}-section`]: {
             color: colorTextLightSolid,
             textAlign: 'start',
             textDecoration: 'none',
@@ -252,7 +252,7 @@ const genBaseStyle: GenerateStyle<TourToken> = (token) => {
         '&-placement-rightTop',
         '&-placement-rightBottom',
       ].join(',')]: {
-        [`${componentCls}-body`]: {
+        [`${componentCls}-section`]: {
           borderRadius: token.min(tourBorderRadius, MAX_VERTICAL_CONTENT_RADIUS),
         },
       },
