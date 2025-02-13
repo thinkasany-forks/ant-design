@@ -44,6 +44,7 @@ import type {
   PopconfirmConfig,
   PopoverConfig,
   PopupOverflow,
+  RadioConfig,
   RangePickerConfig,
   RibbonConfig,
   SelectConfig,
@@ -217,7 +218,7 @@ export interface ConfigProviderProps {
   descriptions?: ComponentStyleConfig;
   empty?: EmptyConfig;
   badge?: BadgeConfig;
-  radio?: ComponentStyleConfig;
+  radio?: RadioConfig;
   rate?: ComponentStyleConfig;
   ribbon?: RibbonConfig;
   switch?: ComponentStyleConfig;

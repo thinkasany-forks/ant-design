@@ -46,6 +46,7 @@ import type { TourProps } from '../tour/interface';
 import type { TransferProps } from '../transfer';
 import type { TreeSelectProps } from '../tree-select';
 import type { RenderEmptyHandler } from './defaultRenderEmpty';
+import type { RadioProps } from '../radio';
 
 export const defaultPrefixCls = 'ant';
 export const defaultIconPrefixCls = 'anticon';
@@ -227,6 +228,8 @@ export type StatisticConfig = ComponentStyleConfig & Pick<StatisticProps, 'class
 
 export type ResultConfig = ComponentStyleConfig & Pick<ResultProps, 'classNames' | 'styles'>;
 
+export type RadioConfig = ComponentStyleConfig & Pick<RadioProps, 'classNames' | 'styles'>;
+
 export type InputNumberConfig = ComponentStyleConfig & Pick<InputNumberProps, 'variant'>;
 
 export type CascaderConfig = ComponentStyleConfig & Pick<CascaderProps, 'variant'>;
@@ -307,7 +310,7 @@ export interface ConfigComponentProps {
   descriptions?: DescriptionsConfig;
   empty?: EmptyConfig;
   badge?: BadgeConfig;
-  radio?: ComponentStyleConfig;
+  radio?: RadioConfig;
   rate?: ComponentStyleConfig;
   switch?: ComponentStyleConfig;
   transfer?: TransferConfig;
