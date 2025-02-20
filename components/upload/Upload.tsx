@@ -6,7 +6,7 @@ import type { UploadProps as RcUploadProps } from 'rc-upload';
 import RcUpload from 'rc-upload';
 
 import { devUseWarning } from '../_util/warning';
-import { ConfigContext } from '../config-provider';
+import { useComponentConfig } from '../config-provider/context';
 import DisabledContext from '../config-provider/DisabledContext';
 import { useLocale } from '../locale';
 import defaultLocale from '../locale/en_US';
@@ -70,6 +70,8 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
     accept = '',
     supportServerRender = true,
     rootClassName,
+    styles,
+    classNames: uploadClassNames,
   } = props;
 
   // ===================== Disabled =====================
@@ -335,7 +337,14 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
     nativeElement: wrapRef.current,
   }));
 
-  const { getPrefixCls, direction, upload: ctxUpload } = React.useContext(ConfigContext);
+  const {
+    getPrefixCls,
+    direction,
+    className: contextClassName,
+    style: contextStyle,
+    classNames: contextClassNames,
+    styles: contextStyles,
+  } = useComponentConfig('upload');
 
   const prefixCls = getPrefixCls('upload', customizePrefixCls);
 
@@ -393,6 +402,14 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
     }
     return (
       <UploadList
+        classNames={{
+          list: classNames(contextClassNames.list, uploadClassNames?.list),
+          item: classNames(contextClassNames.item, uploadClassNames?.item),
+        }}
+        styles={{
+          list: { ...contextStyles.list, ...styles?.list },
+          item: { ...contextStyles.item, ...styles?.item },
+        }}
         prefixCls={prefixCls}
         listType={listType}
         items={mergedFileList}
@@ -425,7 +442,9 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
     rootClassName,
     hashId,
     cssVarCls,
-    ctxUpload?.className,
+    contextClassName,
+    contextClassNames?.root,
+    uploadClassNames?.root,
     {
       [`${prefixCls}-rtl`]: direction === 'rtl',
       [`${prefixCls}-picture-card-wrapper`]: listType === 'picture-card',
@@ -433,7 +452,12 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
     },
   );
 
-  const mergedStyle: React.CSSProperties = { ...ctxUpload?.style, ...style };
+  const mergedStyle: React.CSSProperties = {
+    ...contextStyles?.root,
+    ...styles?.root,
+    ...contextStyle,
+    ...style,
+  };
 
   // ======================== Render ========================
 
