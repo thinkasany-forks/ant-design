@@ -14,15 +14,19 @@ const locales = {
 };
 
 const Block = (props: any) => {
+  const divRef = React.useRef<HTMLDivElement>(null);
   return (
     <div
+      ref={divRef}
       style={{
-        position: 'relative',
+        position: 'absolute',
+        inset: 0,
       }}
     >
       <Image
         {...props}
         width={200}
+        preview={{ getContainer: () => divRef.current }}
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
       />
     </div>
