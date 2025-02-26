@@ -85,7 +85,7 @@ export type ItemRender<T = any> = (
 type PreviewFileHandler = (file: File | Blob) => PromiseLike<string>;
 type BeforeUploadValueType = void | boolean | string | Blob | File;
 
-type SemanticName = 'root' | 'list' | 'item';
+export type SemanticName = 'root' | 'list' | 'item';
 export interface UploadProps<T = any> extends Pick<RcUploadProps, 'capture' | 'hasControlInside'> {
   type?: UploadType;
   name?: string;

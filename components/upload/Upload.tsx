@@ -436,14 +436,14 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
     );
   };
 
-  const mergedCls = classNames(
+  const mergedRootCls = classNames(
     wrapperCls,
     className,
     rootClassName,
     hashId,
     cssVarCls,
     contextClassName,
-    contextClassNames?.root,
+    contextClassNames.root,
     uploadClassNames?.root,
     {
       [`${prefixCls}-rtl`]: direction === 'rtl',
@@ -451,13 +451,9 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
       [`${prefixCls}-picture-circle-wrapper`]: listType === 'picture-circle',
     },
   );
+  const mergedRootStyle: React.CSSProperties = { ...contextStyles.root, ...styles?.root };
 
-  const mergedStyle: React.CSSProperties = {
-    ...contextStyles?.root,
-    ...styles?.root,
-    ...contextStyle,
-    ...style,
-  };
+  const mergedStyle: React.CSSProperties = { ...contextStyle, ...style };
 
   // ======================== Render ========================
 
@@ -470,7 +466,7 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
     });
 
     return (
-      <span className={mergedCls} ref={wrapRef}>
+      <span className={mergedRootCls} ref={wrapRef} style={mergedRootStyle}>
         <div
           className={dragCls}
           style={mergedStyle}
@@ -500,14 +496,14 @@ const InternalUpload: React.ForwardRefRenderFunction<UploadRef, UploadProps> = (
 
   if (listType === 'picture-card' || listType === 'picture-circle') {
     return (
-      <span className={mergedCls} ref={wrapRef}>
+      <span className={mergedRootCls} ref={wrapRef} style={mergedRootStyle}>
         {renderUploadList(uploadButton, !!children)}
       </span>
     );
   }
 
   return (
-    <span className={mergedCls} ref={wrapRef}>
+    <span className={mergedRootCls} ref={wrapRef} style={mergedRootStyle}>
       {uploadButton}
       {renderUploadList()}
     </span>
