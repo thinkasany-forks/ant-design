@@ -197,7 +197,7 @@ const InternalUploadList: React.ForwardRefRenderFunction<UploadListRef, UploadLi
             key={key}
             locale={locale}
             prefixCls={prefixCls}
-            className={classNames(motionClassName)}
+            className={motionClassName}
             style={motionStyle}
             classNames={uploadListClassNames}
             styles={styles}
