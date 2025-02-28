@@ -58,12 +58,11 @@ const BlockList: React.FC<React.PropsWithChildren> = (props: any) => {
       </Button>
       <Tour
         {...props}
+        zIndex={1}
         open={open}
         defaultCurrent={0}
         getPopupContainer={false}
-        onClose={() => {
-          setOpen(false);
-        }}
+        onClose={() => setOpen(false)}
         steps={[
           {
             title: 'Hello World!',
@@ -103,8 +102,8 @@ const App: React.FC = () => {
         { name: 'description', desc: locale.description, version: '6.0.0' },
         { name: 'footer', desc: locale.footer, version: '6.0.0' },
         { name: 'actions', desc: locale.actions, version: '6.0.0' },
-        { name: 'indicator', desc: locale.indicator, version: '6.0.0' },
         { name: 'indicators', desc: locale.indicators, version: '6.0.0' },
+        { name: 'indicator', desc: locale.indicator, version: '6.0.0' },
       ]}
     >
       <BlockList />
