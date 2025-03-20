@@ -35,7 +35,11 @@ export type FormItemLayout = 'horizontal' | 'vertical';
 
 export type { ScrollFocusOptions };
 
+type SemanticName = 'root' | 'label' | 'content';
+
 export interface FormProps<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
+  classNames?: Partial<Record<SemanticName, string>>;
+  styles?: Partial<Record<SemanticName, React.CSSProperties>>;
   prefixCls?: string;
   colon?: boolean;
   name?: string;
