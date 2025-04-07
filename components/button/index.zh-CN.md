@@ -13,7 +13,7 @@ group:
   order: 1
 ---
 
-## 何时使用 {#when-to-use}
+## 何时使用
 
 标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
 
@@ -32,7 +32,7 @@ group:
 - 🚫 禁用：行动点不可用的时候，一般需要文案解释。
 - 🔃 加载中：用于异步操作等待反馈的时候，也可以避免多次提交。
 
-## 代码演示 {#examples}
+## 代码演示
 
 <!-- prettier-ignore -->
 <code src="./demo/basic.tsx">语法糖</code>
@@ -92,17 +92,17 @@ group:
 
 > type PresetColors = 'blue' | 'purple' | 'cyan' | 'green' | 'magenta' | 'pink' | 'red' | 'orange' | 'yellow' | 'volcano' | 'geekblue' | 'lime' | 'gold';
 
-## Semantic DOM {#semantic-dom}
+## Semantic DOM
 
 <code src="./demo/_semantic.tsx" simplify="true"></code>
 
-## 主题变量（Design Token）{#design-token}
+## 主题变量（Design Token）
 
 <ComponentTokenTable component="Button"></ComponentTokenTable>
 
 ## FAQ
 
-### 类型和颜色与变体如何选择？ {#faq-type-color-variant}
+### 类型和颜色与变体如何选择？
 
 类型本质上是颜色与变体的语法糖，内部为其提供了一组颜色与变体的映射关系。如果两者同时存在，优先使用颜色与变体。
 
@@ -118,7 +118,7 @@ group:
 </Button>
 ```
 
-### 如何关闭点击波纹效果？ {#faq-close-wave-effect}
+### 如何关闭点击波纹效果？
 
 如果你不需要这个特性，可以设置 [ConfigProvider](/components/config-provider-cn#api) 的 `wave` 的 `disabled` 为 `true`。
 
@@ -135,6 +135,6 @@ group:
 }
 </style>
 
-## 设计指引 {#design-guide}
+## 设计指引
 
 - [我的按钮究竟该放哪儿！？| Ant Design 4.0 系列分享](https://zhuanlan.zhihu.com/p/109644406)

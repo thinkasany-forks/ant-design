@@ -5,7 +5,6 @@ import os from 'node:os';
 
 import rehypeAntd from './.dumi/rehypeAntd';
 import remarkAntd from './.dumi/remarkAntd';
-import remarkAnchor from './.dumi/remarkAnchor';
 import { version } from './package.json';
 
 export default defineConfig({
@@ -53,7 +52,7 @@ export default defineConfig({
     '@ant-design/icons$': '@ant-design/icons/lib',
   },
   extraRehypePlugins: [rehypeAntd],
-  extraRemarkPlugins: [remarkAntd, remarkAnchor],
+  extraRemarkPlugins: [remarkAntd],
   metas: [
     { name: 'theme-color', content: '#1677ff' },
     { name: 'build-time', content: Date.now().toString() },

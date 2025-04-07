@@ -98,7 +98,7 @@ It accepts all props which native buttons support.
 
 ## FAQ
 
-### How to choose type and color & variant? {#faq-type-color-variant}
+### How to choose type and color & variant?
 
 Type is essentially syntactic sugar for colors and variants. It internally provides a set of mapping relationships between colors and variants for the type. If both exist at the same time, the colors and variants will be used first.
 
@@ -114,7 +114,7 @@ Equivalent
 </Button>
 ```
 
-### How to close the click wave effect? {#faq-close-wave-effect}
+### How to close the click wave effect?
 
 If you don't need this feature, you can set `disabled` of `wave` in [ConfigProvider](/components/config-provider#api) as `true`.
 
