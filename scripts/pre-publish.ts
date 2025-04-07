@@ -4,9 +4,8 @@ import { Octokit } from '@octokit/rest';
 import AdmZip from 'adm-zip';
 import axios from 'axios';
 import chalk from 'chalk';
-import dotnev from 'dotenv';
 import Spinnies from 'spinnies';
-
+import dotnev from 'dotenv';
 import checkRepo from './check-repo';
 
 dotnev.config({ override: true });
@@ -14,8 +13,12 @@ dotnev.config({ override: true });
 const { Notification: Notifier } = require('node-notifier');
 const simpleGit = require('simple-git');
 
+const blockStatus = ['failure', 'cancelled', 'timed_out'] as const;
+
 const spinner = { interval: 80, frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'] };
 const spinnies = new Spinnies({ spinner });
+
+const IGNORE_ACTIONS = ['Check Virtual Regression Approval', 'issue-remove-inactive'];
 
 let spinniesId = 0;
 
@@ -63,6 +66,27 @@ const showMessage = (
 process.on('SIGINT', () => {
   process.exit(1);
 });
+
+const emojify = (status = '') => {
+  if (!status) {
+    return '';
+  }
+  const emoji = {
+    /* status */
+    completed: '✅',
+    queued: '🕒',
+    in_progress: '⌛',
+    /* conclusion */
+    success: '✅',
+    failure: '❌',
+    neutral: '⚪',
+    cancelled: '❌',
+    skipped: '⏭️',
+    timed_out: '⌛',
+    action_required: '🔴',
+  }[status];
+  return `${emoji || ''} ${(status || '').padEnd(15)}`;
+};
 
 const toMB = (bytes: number) => (bytes / 1024 / 1024).toFixed(2);
 
@@ -120,15 +144,26 @@ const runPrePublish = async () => {
   showMessage(`开始检查远程分支 ${currentBranch} 的 CI 状态`, true);
 
   const failureUrlList: string[] = [];
-
-  const { data } = await octokit.rest.repos.getCombinedStatusForRef({
+  let {
+    data: { check_runs },
+  } = await octokit.checks.listForRef({
     owner,
     repo,
     ref: sha,
+    filter: 'all',
   });
-
-  showMessage(`远程分支 CI 状态：${data.state}`, 'succeed');
-  if (data.state === 'failure') {
+  showMessage(`远程分支 CI 状态(${check_runs.length})：`, 'succeed');
+  check_runs = check_runs.filter((run) =>
+    IGNORE_ACTIONS.every((action) => !run.name.includes(action)),
+  );
+  check_runs.forEach((run) => {
+    showMessage(`  ${run.name.padEnd(36)} ${emojify(run.status)} ${emojify(run.conclusion || '')}`);
+    if (blockStatus.some((status) => run.conclusion === status)) {
+      failureUrlList.push(run.html_url!);
+    }
+  });
+  const conclusions = check_runs.map((run) => run.conclusion);
+  if (blockStatus.some((status) => conclusions.includes(status))) {
     showMessage(chalk.bgRedBright('远程分支 CI 执行异常，无法继续发布，请尝试修复或重试'), 'fail');
     showMessage(`  点此查看状态：https://github.com/${owner}/${repo}/commit/${sha}`);
 
@@ -139,18 +174,12 @@ const runPrePublish = async () => {
     process.exit(1);
   }
 
-  if (data.state === 'pending') {
+  const statuses = check_runs.map((run) => run.status);
+  if (check_runs.length < 1 || statuses.includes('queued') || statuses.includes('in_progress')) {
     showMessage(chalk.bgRedBright('远程分支 CI 还在执行中，请稍候再试'), 'fail');
     showMessage(`  点此查看状态：https://github.com/${owner}/${repo}/commit/${sha}`);
     process.exit(1);
   }
-
-  if (data.state !== 'success') {
-    showMessage(chalk.bgRedBright('远程分支 CI 状态异常'), 'fail');
-    showMessage(`  点此查看状态：https://github.com/${owner}/${repo}/commit/${sha}`);
-    process.exit(1);
-  }
-
   showMessage(`远程分支 CI 已通过`, 'succeed');
   // clean up
   await runScript({ event: 'clean', path: '.', stdio: 'inherit' });
