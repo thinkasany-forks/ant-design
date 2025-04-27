@@ -8,7 +8,11 @@ interface ErrorBoundaryProps {
    * @deprecated please use `title` instead.
    */
   message?: React.ReactNode;
+  /**
+   * @deprecated please use `content` instead.
+   */
   description?: React.ReactNode;
+  content?: React.ReactNode;
   children?: React.ReactNode;
   id?: string;
 }
@@ -33,22 +37,21 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   render() {
-    const { message, title, description, id, children } = this.props;
+    const { message, title, description, content, id, children } = this.props;
     const { error, info } = this.state;
     const mergedTitle = title ?? message;
+    const mergedContent = content ?? description;
     const componentStack = info?.componentStack || null;
     const errorMessage =
       typeof mergedTitle === 'undefined' ? (error || '').toString() : mergedTitle;
-    const errorDescription = typeof description === 'undefined' ? componentStack : description;
+    const errorContent = typeof mergedContent === 'undefined' ? componentStack : mergedContent;
     if (error) {
       return (
         <Alert
           id={id}
           type="error"
           title={errorMessage}
-          description={
-            <pre style={{ fontSize: '0.9em', overflowX: 'auto' }}>{errorDescription}</pre>
-          }
+          content={<pre style={{ fontSize: '0.9em', overflowX: 'auto' }}>{errorContent}</pre>}
         />
       ) as React.ReactNode;
     }

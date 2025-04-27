@@ -13,21 +13,21 @@ const App: React.FC = () => (
     <br />
     <Alert
       title="Success Tips"
-      description="Detailed description and advice about successful copywriting."
+      content="Detailed description and advice about successful copywriting."
       type="success"
       showIcon
     />
     <br />
     <Alert
       title="Informational Notes"
-      description="Additional description and information about copywriting."
+      content="Additional description and information about copywriting."
       type="info"
       showIcon
     />
     <br />
     <Alert
       title="Warning"
-      description="This is a warning notice about copywriting."
+      content="This is a warning notice about copywriting."
       type="warning"
       showIcon
       closable
@@ -35,7 +35,7 @@ const App: React.FC = () => (
     <br />
     <Alert
       title="Error"
-      description="This is an error message about copywriting."
+      content="This is an error message about copywriting."
       type="error"
       showIcon
     />

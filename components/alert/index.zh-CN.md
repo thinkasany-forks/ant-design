@@ -43,6 +43,7 @@ group:
 | afterClose | 关闭动画结束后触发的回调函数 | () => void | - |  |
 | banner | 是否用作顶部公告 | boolean | false |  |
 | closable | 可关闭配置，>=5.15.0: 支持 `aria-*` | boolean \| ({ closeIcon?: React.ReactNode } & React.AriaAttributes) | `false` |  |
+| ~~description~~ | 警告提示的辅助性文字介绍, 请使用 `content` 替换 | ReactNode | - |  |
 | description | 警告提示的辅助性文字介绍 | ReactNode | - |  |
 | icon | 自定义图标，`showIcon` 为 true 时有效 | ReactNode | - |  |
 | ~~message~~ | 警告提示内容，请使用 `title` 替换 | ReactNode | - |  |

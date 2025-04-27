@@ -42,7 +42,8 @@ Common props ref：[Common props](/docs/react/common-props)
 | afterClose | Called when close animation is finished | () => void | - |  |
 | banner | Whether to show as banner | boolean | false |  |
 | closable | The config of closable, >=5.15.0: support `aria-*` | boolean \| ({ closeIcon?: React.ReactNode } & React.AriaAttributes) | `false` |  |
-| description | Additional content of Alert | ReactNode | - |  |
+| ~~description~~ | Additional content of Alert, please use `content` instead | ReactNode | - |  |
+| content | Additional content of Alert | ReactNode | - |  |
 | icon | Custom icon, effective when `showIcon` is true | ReactNode | - |  |
 | ~~message~~ | Content of Alert, please use `title` instead | ReactNode | - |  |
 | title | Content of Alert | ReactNode | - |  |

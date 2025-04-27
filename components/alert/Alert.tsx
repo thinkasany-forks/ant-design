@@ -8,9 +8,10 @@ import InfoCircleFilled from '@ant-design/icons/InfoCircleFilled';
 import CSSMotion from '@rc-component/motion';
 import pickAttrs from '@rc-component/util/lib/pickAttrs';
 import { composeRef } from '@rc-component/util/lib/ref';
-import classNames from 'classnames';
+import cls from 'classnames';
 
 import type { ClosableType } from '../_util/hooks/useClosable';
+import useMergeSemantic from '../_util/hooks/useMergeSemantic';
 import { replaceElement } from '../_util/reactNode';
 import { devUseWarning } from '../_util/warning';
 import { useComponentConfig } from '../config-provider/context';
@@ -20,7 +21,7 @@ export interface AlertRef {
   nativeElement: HTMLDivElement;
 }
 
-type SemanticName = 'root' | 'icon' | 'section' | 'title' | 'description' | 'actions';
+type SemanticName = 'root' | 'icon' | 'section' | 'title' | 'content' | 'actions';
 export interface AlertProps {
   /** Type of Alert styles, options:`success`, `info`, `warning`, `error` */
   type?: 'success' | 'info' | 'warning' | 'error';
@@ -37,8 +38,12 @@ export interface AlertProps {
    * @deprecated please use `title` instead.
    */
   message?: React.ReactNode;
-  /** Additional content of Alert */
+  /**
+   * @deprecated please use `content` instead.
+   *  Additional content of Alert
+   */
   description?: React.ReactNode;
+  content?: React.ReactNode;
   /** Callback when close Alert */
   onClose?: React.MouseEventHandler<HTMLButtonElement>;
   /** Trigger when animation ending of Alert */
@@ -75,7 +80,7 @@ interface IconNodeProps {
   type: AlertProps['type'];
   icon: AlertProps['icon'];
   prefixCls: AlertProps['prefixCls'];
-  description: AlertProps['description'];
+  content: AlertProps['content'];
   className?: string;
   style?: React.CSSProperties;
 }
@@ -85,7 +90,7 @@ const IconNode: React.FC<IconNodeProps> = (props) => {
   const iconType = iconMapFilled[type!] || null;
   if (icon) {
     return replaceElement(icon, <span className={`${prefixCls}-icon`}>{icon}</span>, () => ({
-      className: classNames(
+      className: cls(
         (
           icon as ReactElement<{
             className?: string;
@@ -130,6 +135,7 @@ const CloseIconNode: React.FC<CloseIconProps> = (props) => {
 const Alert = React.forwardRef<AlertRef, AlertProps>((props, ref) => {
   const {
     description,
+    content,
     prefixCls: customizePrefixCls,
     message,
     title,
@@ -148,9 +154,10 @@ const Alert = React.forwardRef<AlertRef, AlertProps>((props, ref) => {
     action,
     id,
     styles,
-    classNames: alertClassNames,
+    classNames,
     ...otherProps
   } = props;
+  const mergedContent = content ?? description;
 
   const mergedTitle = title ?? message;
 
@@ -161,6 +168,7 @@ const Alert = React.forwardRef<AlertRef, AlertProps>((props, ref) => {
     [
       ['closeText', 'closable.closeIcon'],
       ['message', 'title'],
+      ['description', 'content'],
     ].forEach(([deprecatedName, newName]) => {
       warning.deprecated(!(deprecatedName in props), deprecatedName, newName);
     });
@@ -182,6 +190,11 @@ const Alert = React.forwardRef<AlertRef, AlertProps>((props, ref) => {
     classNames: contextClassNames,
     styles: contextStyles,
   } = useComponentConfig('alert');
+
+  const [mergedClassNames, mergedStyles] = useMergeSemantic(
+    [contextClassNames, classNames],
+    [contextStyles, styles],
+  );
   const prefixCls = getPrefixCls('alert', customizePrefixCls);
 
   const [hashId, cssVarCls] = useStyle(prefixCls);
@@ -219,7 +232,7 @@ const Alert = React.forwardRef<AlertRef, AlertProps>((props, ref) => {
   // banner mode defaults to Icon
   const isShowIcon = banner && showIcon === undefined ? true : showIcon;
 
-  const alertCls = classNames(
+  const alertCls = cls(
     prefixCls,
     `${prefixCls}-${type}`,
     {
@@ -231,8 +244,7 @@ const Alert = React.forwardRef<AlertRef, AlertProps>((props, ref) => {
     contextClassName,
     className,
     rootClassName,
-    contextClassNames.root,
-    alertClassNames?.root,
+    mergedClassNames.root,
     cssVarCls,
     hashId,
   );
@@ -278,11 +290,10 @@ const Alert = React.forwardRef<AlertRef, AlertProps>((props, ref) => {
           id={id}
           ref={composeRef(internalRef, setRef)}
           data-show={!closed}
-          className={classNames(alertCls, motionClassName)}
+          className={cls(alertCls, motionClassName)}
           style={{
-            ...contextStyles.root,
+            ...mergedStyles.root,
             ...contextStyle,
-            ...styles?.root,
             ...style,
             ...motionStyle,
           }}
@@ -294,59 +305,39 @@ const Alert = React.forwardRef<AlertRef, AlertProps>((props, ref) => {
         >
           {isShowIcon ? (
             <IconNode
-              className={classNames(
-                `${prefixCls}-icon`,
-                alertClassNames?.icon,
-                contextClassNames.icon,
-              )}
-              style={{ ...contextStyles.icon, ...styles?.icon }}
-              description={description}
+              className={cls(`${prefixCls}-icon`, mergedClassNames.icon)}
+              style={mergedStyles.icon}
+              content={content}
               icon={props.icon}
               prefixCls={prefixCls}
               type={type}
             />
           ) : null}
           <div
-            className={classNames(
-              `${prefixCls}-section`,
-              alertClassNames?.section,
-              contextClassNames.section,
-            )}
-            style={{ ...contextStyles.section, ...styles?.section }}
+            className={cls(`${prefixCls}-section`, mergedClassNames.section)}
+            style={mergedStyles.section}
           >
             {mergedTitle ? (
               <div
-                className={classNames(
-                  `${prefixCls}-title`,
-                  alertClassNames?.title,
-                  contextClassNames.title,
-                )}
-                style={{ ...contextStyles.title, ...styles?.title }}
+                className={cls(`${prefixCls}-title`, mergedClassNames.title)}
+                style={mergedStyles.title}
               >
                 {mergedTitle}
               </div>
             ) : null}
-            {description ? (
+            {mergedContent ? (
               <div
-                className={classNames(
-                  `${prefixCls}-description`,
-                  alertClassNames?.description,
-                  contextClassNames.description,
-                )}
-                style={{ ...contextStyles.description, ...styles?.description }}
+                className={cls(`${prefixCls}-content`, mergedClassNames.content)}
+                style={mergedStyles.content}
               >
-                {description}
+                {mergedContent}
               </div>
             ) : null}
           </div>
           {action ? (
             <div
-              className={classNames(
-                `${prefixCls}-actions`,
-                alertClassNames?.actions,
-                contextClassNames.actions,
-              )}
-              style={{ ...contextStyles.actions, ...styles?.actions }}
+              className={cls(`${prefixCls}-actions`, mergedClassNames.actions)}
+              style={mergedStyles.actions}
             >
               {action}
             </div>

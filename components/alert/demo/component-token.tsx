@@ -18,7 +18,7 @@ const App: React.FC = () => (
     <Alert
       icon={icon}
       title="Success Tips"
-      description="Detailed description and advice about successful copywriting."
+      content="Detailed description and advice about successful copywriting."
       type="success"
       showIcon
     />

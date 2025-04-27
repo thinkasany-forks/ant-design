@@ -17,7 +17,7 @@ const App: React.FC = () => (
     <br />
     <Alert
       title="Error Text"
-      description="Error Description Error Description Error Description Error Description Error Description Error Description"
+      content="Error Description Error Description Error Description Error Description Error Description Error Description"
       type="error"
       closable
       onClose={onClose}
@@ -25,7 +25,7 @@ const App: React.FC = () => (
     <br />
     <Alert
       title="Error Text"
-      description="Error Description Error Description Error Description Error Description Error Description Error Description"
+      content="Error Description Error Description Error Description Error Description Error Description Error Description"
       type="error"
       onClose={onClose}
       closable={{

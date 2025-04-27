@@ -18,7 +18,7 @@ const App: React.FC = () => (
     <Alert
       title="Error Text"
       showIcon
-      description="Error Description Error Description Error Description Error Description"
+      content="Error Description Error Description Error Description Error Description"
       type="error"
       action={
         <Button size="small" danger>
@@ -42,7 +42,7 @@ const App: React.FC = () => (
     <br />
     <Alert
       title="Info Text"
-      description="Info Description Info Description Info Description Info Description"
+      content="Info Description Info Description Info Description Info Description"
       type="info"
       action={
         <Space direction="vertical">
