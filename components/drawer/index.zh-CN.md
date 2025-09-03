@@ -24,9 +24,11 @@ demo:
 ## 代码演示
 
 <!-- prettier-ignore -->
-<code src="./demo/basic-right.tsx">基础抽屉</code>
-<code src="./demo/placement.tsx">自定义位置</code>
-<code src="./demo/loading.tsx" version="5.17.0">加载中</code>
+<!-- <code src="./demo/basic-right.tsx">基础抽屉</code> -->
+
+<code src="./demo/placement.tsx">自定义位置</code> <code src="./demo/resizable.tsx">自定义拖拽</code>
+
+<!-- <code src="./demo/loading.tsx" version="5.17.0">加载中</code>
 <code src="./demo/extra.tsx">额外操作</code>
 <code src="./demo/render-in-current.tsx">渲染在当前 DOM</code>
 <code src="./demo/form-in-drawer.tsx">抽屉表单</code>
@@ -40,7 +42,7 @@ demo:
 <code src="./demo/no-mask.tsx" debug>无遮罩</code>
 <code src="./demo/render-panel.tsx" debug>_InternalPanelDoNotUseOrYouWillBeFired</code>
 <code src="./demo/scroll-debug.tsx" debug>滚动锁定调试</code>
-<code src="./demo/component-token.tsx" debug>组件 Token</code>
+<code src="./demo/component-token.tsx" debug>组件 Token</code> -->
 
 ## API
 

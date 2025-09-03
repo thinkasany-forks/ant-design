@@ -32,7 +32,7 @@ export interface PushState {
 export interface DrawerProps
   extends Omit<RcDrawerProps, 'maskStyle' | 'destroyOnClose' | 'mask'>,
     Omit<DrawerPanelProps, 'prefixCls'> {
-  size?: sizeType;
+  size?: sizeType | number;
   open?: boolean;
   afterOpenChange?: (open: boolean) => void;
   classNames?: DrawerClassNames;
