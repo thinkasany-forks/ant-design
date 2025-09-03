@@ -252,6 +252,52 @@ const genDrawerStyle: GenerateStyle<DrawerToken> = (token) => {
       '&-rtl': {
         direction: 'rtl',
       },
+
+      '&-resizable-dragger': {
+        position: 'absolute',
+        zIndex: 2,
+        pointerEvents: 'auto',
+
+        '&:hover': {
+          backgroundColor: '#1890ff !important',
+        },
+
+        '&-dragging': {
+          backgroundColor: '#1890ff !important',
+        },
+
+        '&-left': {
+          top: 0,
+          bottom: 0,
+          right: unit(-3),
+          width: unit(6),
+          cursor: 'ew-resize',
+        },
+
+        '&-right': {
+          top: 0,
+          bottom: 0,
+          left: unit(-3),
+          width: unit(6),
+          cursor: 'ew-resize',
+        },
+
+        '&-top': {
+          left: 0,
+          right: 0,
+          bottom: unit(-3),
+          height: unit(6),
+          cursor: 'ns-resize',
+        },
+
+        '&-bottom': {
+          left: 0,
+          right: 0,
+          top: unit(-3),
+          height: unit(6),
+          cursor: 'ns-resize',
+        },
+      },
     },
   };
 };

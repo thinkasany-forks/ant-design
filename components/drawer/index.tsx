@@ -55,7 +55,7 @@ const Drawer: React.FC<DrawerProps> & {
     rootClassName,
     width,
     height,
-    size = 'default',
+    size,
     mask: drawerMask,
     push = defaultPushState,
     open,
@@ -66,6 +66,7 @@ const Drawer: React.FC<DrawerProps> & {
     panelRef = null,
     style,
     className,
+    resizable,
 
     // Deprecated
     maskStyle,
@@ -75,7 +76,8 @@ const Drawer: React.FC<DrawerProps> & {
     destroyOnHidden,
     ...rest
   } = props;
-
+  const [mergedWidth, setWidth] = React.useState(320);
+  const [mergedHeight, setHeight] = React.useState(240);
   const {
     getPopupContainer,
     getPrefixCls,
@@ -123,15 +125,9 @@ const Drawer: React.FC<DrawerProps> & {
   }
 
   // ============================ Size ============================
-  const mergedWidth = React.useMemo<string | number>(
-    () => width ?? (size === 'large' ? 736 : 378),
-    [width, size],
-  );
+  // const mergedWidth = width ?? (size === 'large' ? 736 : 378);
 
-  const mergedHeight = React.useMemo<string | number>(
-    () => height ?? (size === 'large' ? 736 : 378),
-    [height, size],
-  );
+  // const mergedHeight = height ?? (size === 'large' ? 736 : 378);
 
   // =========================== Motion ===========================
   const maskMotion: CSSMotionProps = {
@@ -177,6 +173,9 @@ const Drawer: React.FC<DrawerProps> & {
     mergedClassNames.root,
   );
 
+  const { placement } = rest;
+  const isHorizontal = placement === 'left' || placement === 'right';
+  const { onResize, onResizeStart, onResizeEnd } = resizable || {};
   return (
     <ContextIsolator form space>
       <zIndexContext.Provider value={contextZIndex}>
@@ -201,6 +200,22 @@ const Drawer: React.FC<DrawerProps> & {
           push={push}
           width={mergedWidth}
           height={mergedHeight}
+          resizable={{
+            onResize: (size) => {
+              if (isHorizontal) {
+                setWidth(size);
+              } else {
+                setHeight(size);
+              }
+              onResize?.(size);
+            },
+            onResizeStart: () => {
+              onResizeStart?.();
+            },
+            onResizeEnd: () => {
+              onResizeEnd?.();
+            },
+          }}
           style={{ ...contextStyle, ...style }}
           rootStyle={{ ...rootStyle, ...mergedStyles.root }}
           className={classNames(contextClassName, className)}
